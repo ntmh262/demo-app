@@ -1,0 +1,537 @@
+/*Rest CSS */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /*box-sizing là một thuộc tính trong CSS được sử dụng để xác định cách tính toán kích thước của một phần tử và xác định xem các thuộc tính width
+   và height áp dụng cho phần nào của phần tử đó. 
+   border-box: Kích thước của phần tử bao gồm cả nội dung, padding và border. Khi bạn đặt kích thước (width hoặc height), 
+   nó áp dụng cho toàn bộ phần tử, bao gồm nội dung, padding và border.*/
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+} /*xét font chữ cho tất cả web, những thẻ nào có chữ thì nó sẽ kế thừa*/
+/* Common */
+
+.row::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.clear {
+  clear: both; /*clear: both; Phần tử sẽ không chồng chéo với bất kỳ phần tử nào có thuộc tính float ở trước nó, bất kể là left, right, hay cả hai.*/
+}
+.text-white {
+  color: #fff !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.pull-right {
+  float: right;
+} /*kéo sang phải*/
+.btn {
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 11px 16px;
+  display: inline-block;
+  margin-top: 15px;
+  border: none;
+}
+.btn:hover {
+  color: #000;
+  background-color: #ccc;
+  opacity: 0.9;
+  cursor: pointer;
+}
+.row {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+.column {
+  float: left;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.column-third {
+  width: 33.3333%;
+}
+.column-half {
+  width: 50%;
+}
+.column-full {
+  width: 100%;
+}
+.margin-top-8 {
+  margin-top: 8px !important;
+}
+.margin-top-16 {
+  margin-top: 16px !important;
+}
+/*
+1. Từ ngoài vào trong
+2. Từ trên xuống dưới
+3. Tổng quan đến chi tiết
+*/
+
+/*
+1. Vị trí
+2. Kích thước (width, height
+3. Màu sắc
+4. Kiểu dáng (kiểu chữ, hình tròn, vuông...)
+*/
+#main {
+}
+
+#header {
+  position: fixed;
+  height: 46px;
+  background-color: #000;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1; /* nếu bạn muốn một phần tử nằm trên phần tử khác, bạn có thể đặt z-index của nó cao hơn. Điều này thường được sử dụng khi bạn có các phần tử chồng lên nhau, chẳng hạn như menu hover, popup, hoặc modal.
+  z-index chỉ hoạt động trên các phần tử có thuộc tính vị trí (position) được đặt là relative, absolute, hoặc fixed. Nếu các phần tử này không có thuộc tính vị trí, z-index sẽ không có hiệu lực.*/
+} /* Thêm thuộc tính position: fixed vào header để có thể scroll khi content dài, cho top, right, left = 0 để nó bám dính vào các mép màn hình*/
+
+#nav {
+  display: inline-block;
+} /*do thẻ nav- ul chiếm hết chiều ngang dẫn đến search bị tụt xuống hàng dưới nên phải css cho nav=inline-block nó sẽ làm mất kế thừa thằng block*/
+
+#nav > li {
+  display: inline-block; /*chỉ có mỗi thẻ con li chịu ảnh hưởng */
+}
+
+#nav li {
+  position: relative;
+}
+
+#nav > li > a /*lấy vào thẻ con trực tiếp là thẻ a*/ {
+  color: #fff;
+  text-transform: uppercase; /*viết hoa chữ cái*/
+}
+
+#nav li a /*cả thẻ a của cấp cha và cấp con đều bị ảnh hưởng*/ {
+  text-decoration: none;
+  line-height: 46px;
+  padding: 0 24px;
+  display: block;
+}
+
+#nav li:hover .subnav {
+  display: block;
+}
+
+#nav > li:hover > a,
+#nav .subnav li:hover a {
+  color: #000;
+  background-color: #ccc;
+} /*2 thẻ này dùng chung thuộc tính*/
+
+/* #nav li:hover a {
+  color: #000;
+  background-color: #ccc;
+} */
+
+#nav .subnav {
+  position: absolute;
+  display: none;
+  min-width: 160px;
+  top: 100%; /*dùng top-left để căn chỉnh chuẩn hơn*/
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /*thêm các bóng đổ vào phần tử */
+}
+
+#nav .subnav a {
+  color: #000; /* tất cả thẻ a có trong thằng subnav đều có màu đen*/
+  padding: 0 12px;
+  line-height: 38px;
+}
+
+#nav,
+.subnav {
+  list-style-type: none;
+} /*bỏ dấu chấm đầu dòng*/
+
+/*display: inline-block;*/
+/* - hover vào thẻ li, con của thẻ li được hover.
+- Dùng display: inline-block: nghĩa là sẽ làm cho thẻ đó lấy chiều cao bằng line-height (chiều cao của block chứa nó) để có thể làm hiệu ứng hover
+*/
+
+#nav .nav-arrow-down /*css cho icon down*/ {
+  font-size: 14px;
+}
+
+#header .search-btn {
+  float: right; /*vì search-btn đang nằm dưới vì nó đang là thẻ div và mặc định nó cũng có tính chất kế thừa kết chiều ngang
+   nó có thể chiếm nên nó chiếm hết 100% thẻ cha. Để đẩy sang phải thì dùng Float =right*/
+  padding: 0 21px;
+}
+
+#header .search-btn:hover {
+  background-color: rgb(150, 115, 27);
+  cursor: pointer; /*thay đổi hình dạng trỏ chuột thành bàn tay*/
+}
+
+#header .search-icon {
+  color: #fff;
+  font-size: 18px;
+  line-height: 46px;
+}
+/* slider */
+#slider {
+  /* min-height: 500px;
+  background-color: #333; */
+  /*height: 400px; thêm height: 400px ( bị dính trên phần header vì position làm cho mục header nổi lên tầng trên. Vậy lên bổ sung margin-top = chiều cao của header là được.
+  background-color: aquamarine;*/
+  position: relative;
+  margin-top: 46px;
+  padding-top: 50%; /*khi nó thêm 1 cái value ở sau là giá trị % thì 50% chính là 50 % chiều ngang của chính nó. Vì vậy khi thu nhỏ phóng to kích thước chiều cao luôn bằng 50% của chiều rộng*/
+  background: url("/assets/img/silder/silder\ 11.webp");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} /*Để đặt hình nền sao cho nó được căn chỉnh ở trung tâm trên cùng của phần tử, bạn có thể sử dụng các thuộc tính CSS như background-image, background-position, và background-size.
+Trong đó:
+
+url('đường_dẫn_đến_hình_ảnh') là đường dẫn đến hình ảnh bạn muốn sử dụng làm nền.
+background-position: top center; đặt hình nền ở trung tâm của trên cùng của phần tử.
+background-repeat: no-repeat; ngăn việc lặp lại hình nền.
+background-size: cover; làm cho hình nền phù hợp với kích thước của phần tử và không bị méo.*/
+
+#slider .text-content {
+  position: absolute;
+  bottom: 18px;
+  color: #000000;
+  /* left: 50%;
+  transform: translateX(-50%); Cách thứ 1 căn chỉnh giữa*/
+  width: 100%; /*Cách 2: sử dụng */
+  /* right: 0;
+  left: 0; Cách thứ 3 */
+  text-align: center;
+}
+#slider .text-heading {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#slider .text-description {
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* content */
+#content {
+}
+#content .content-section {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto; /*Thuộc tính margin-left: auto; và margin-right: auto; được sử dụng để căn giữa một phần tử trong container của nó. Khi sử dụng cả hai thuộc tính này cùng một lúc, phần tử sẽ được căn giữa theo chiều ngang bên trong container của nó.
+  Lưu ý rằng để margin-left: auto; và margin-right: auto; hoạt động, phần tử cần phải có một chiều rộng cụ thể (nghĩa là không được đặt là auto hoặc không có giá trị chiều rộng được xác định).*/
+  padding: 64px 0 112px;
+}
+#content .section-heading {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 4px; /*khoảng cách giữa các chữ cái*/
+}
+#content .section-sub-heading {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 25px;
+  font-style: italic; /*chữ nghiêng*/
+  opacity: 0.6; /*làm chữ trong suốt*/
+}
+#content .about-text {
+  font-size: 15px;
+  margin-top: 25px;
+  text-align: justify; /*căn đều hàng chữ 2 bên */
+  line-height: 1.4; /*dùng giá trị tương đối, chỉnh giá trị chiều cao của dòng*/
+}
+
+#content .health-list {
+  margin-top: 48px;
+}
+/* #content .health-item {
+  /* float: left; /* float left áp dụng với các phần tử con, mục đích để các phần tử con này vào chung 1 hàng và bên trái, item 1 vì đưa lên đầu tiên, item2 item3 tương tự. Nếu bạn css vào member list thì nó chỉ là 1 list chung
+  width: 33.33333%; 
+  text-align: center;
+} */
+#content .health-name {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(150, 115, 27);
+}
+#content .health-img {
+  margin-top: 15px;
+  width: 200px;
+  border-radius: 4px;
+}
+/* Health-Diet-Menu-section */
+.health-diet-menu-section {
+  background-color: #000;
+}
+.menu-food {
+  margin-top: 40px;
+  background-color: #fff;
+  list-style: none;
+}
+.menu-food li {
+  color: #757575;
+  font-size: 15px;
+  padding: 11px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-food .new {
+  background: red;
+  color: #fff;
+  padding: 3px 4px;
+  margin-left: 8px;
+  border-radius: 5px;
+}
+.menu-food .day {
+  float: right;
+  width: 100px;
+  height: 24px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 24px;
+  margin-top: -3px;
+}
+/* Menu food */
+.food-list {
+  margin-top: 32px;
+  /* margin-bottom: 48px; */
+  /* margin-left: -8px; căn chỉnh để mép trên dưới bằng nhau cho 
+  margin-right: -8px; căn chỉnh để mép trên dưới bằng nhau cho */
+}
+/* .food-item {
+  float: left;
+  padding: 0 8px; 
+  width: 33.33333%;
+} */
+.food-img:hover {
+  opacity: 0.7;
+}
+.food-img {
+  width: 100%;
+  display: block; /*không tạo khoảng cách giữa phần img và body*/
+}
+.food-body {
+  padding: 17px;
+  font-size: 15px;
+  background-color: #fff;
+}
+.food-heading {
+  font-size: 15px;
+  font-weight: 600;
+}
+.food-price:hover {
+  color: rgb(157, 8, 8);
+}
+
+.food-price {
+  margin-top: 15px;
+  color: rgb(247, 16, 16);
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.food-description:hover {
+  opacity: 0.9;
+  color: #000000;
+}
+.food-description {
+  margin-top: 15px;
+  line-height: 1.6;
+  color: #0c0b0b;
+}
+/* .overflow {
+  overflow: auto;
+} chỉnh tràn text */
+/* .btn:hover {
+  color: #fff;
+  background-color: #000;
+  opacity: 0.6;
+  cursor: pointer;
+} */
+
+/* pop-up */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+  /* overflow: hidden;
+  border-radius: 10px; */
+}
+.modal.open {
+  display: flex;
+}
+.modal-container {
+  position: relative;
+  background-color: #fff;
+  width: 900px;
+  min-height: 200px;
+  max-width: calc(100% - 32px);
+  animation: modalFadeIn ease 0.5s;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.modal-close:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  /* background-color: #215a11; */
+}
+.modal-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+  padding: 16px;
+}
+.modal-header {
+  background-color: #298311;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #000;
+}
+.modal-body {
+  padding: 16px;
+}
+.modal-label {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 11px;
+  font-weight: bolder;
+  color: #000000d9;
+  /* font-weight: bold; */
+}
+.modal-input {
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+.modal-heading-icon {
+  margin-right: 16px;
+}
+#btn-order-check {
+  background-color: #298311;
+  color: #000;
+  width: 100%;
+  border: 10 solid #000;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 18px;
+  border-radius: 5px;
+}
+#btn-order-check:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  background-color: #349a18;
+}
+.modal-footer {
+  padding: 16px;
+  position: relative;
+}
+
+.btn-close-footer:hover {
+  opacity: 0.9;
+  cursor: pointer;
+  background-color: rgb(157, 8, 8);
+}
+.btn-close-footer {
+  display: block;
+  text-align: left;
+  color: #fff;
+  background-color: #be2e24;
+  border: none;
+  /* margin: 16px 0px; */
+  padding: 11px 30px;
+  font-size: 15px;
+  border-radius: 4px;
+  /* border: none solid black; */
+  /* vertical-align: middle; */
+  /* position: absolute;
+  margin-bottom: 10px; */
+}
+
+.modal-help {
+  text-align: right;
+  font-weight: bold;
+}
+.modal-help a {
+  color: #2196f3;
+}
+/* Contact form */
+.contact-content {
+  margin-top: 48px;
+}
+.contact-info {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #298311;
+}
+.contact-info i {
+  width: 30px;
+  display: inline-block;
+}
+.contact-form {
+  font-size: 15px;
+}
+.contact-form .font-control {
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+/* .contact-form .form-submit-btn {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  padding: 10px 16px;
+  float: right;
+  border-radius: 8px; 
+}*/
+/* .btn:hover {
+  background-color: #ccc;
+  color: #000;
+  cursor: pointer;
+} */
+/* Map section */
+.map-section img {
+  width: 100%;
+}
+
+/* Footer section */
+#footer {
+  padding: 64px 16px;
+  text-align: center;
+}
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-140px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
