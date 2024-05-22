@@ -172,7 +172,7 @@
         <img src="assets/img/map/map.jpg" alt="Map">
       </div>
     </div>
-    <div id=" footer">
+    <div id="footer">
       <div class="socials-list">
         <a href=""><i class="ti-facebook"></i></a>
         <a href=""><i class="ti-instagram"></i></a>
@@ -182,7 +182,7 @@
     </div>
   </div>
   <!-- popup khi tạo modal người ta thường dùng position = fixed-->
-  <div class="modal js-modal open">
+  <div class="modal js-modal">
     <div class="modal-container js-modal-container">
       <div class="modal-close js-modal-close">
         <i class="ti-close"></i>
@@ -236,23 +236,19 @@
       modal.classList.remove('open')
     }
 
-    // function hideOrderNow() {
-    //   modal.classList.remove(open)
-    // }
-
-
     // Lặp qua từng thẻ button và nghe hành vi clicks
     for (const orderBtn of orderBtns) {
       orderBtn.addEventListener('click', showOrderNow)
     }
     //Nghe hành vi click vào button close
     modalClose.addEventListener('click', hideOrderNow)
-
+    //cách click ngoài tắt popup
     modal.addEventListener('click', hideOrderNow)
 
     modalContainer.addEventListener('click', function (event) {
       event.stopPropagation()
     })
+    //Click close đóng popup
     closeFooterBtn.addEventListener('click', hideOrderNow)
   </script>
 
