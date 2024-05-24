@@ -9,19 +9,15 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /*hành động khi scroll mượt hơn*/
   font-family: Arial, Helvetica, sans-serif;
 } /*xét font chữ cho tất cả web, những thẻ nào có chữ thì nó sẽ kế thừa*/
 /* Common */
 
-.row::after {
-  content: "";
-  display: block;
-  clear: both;
-}
 .clear {
-  clear: both; /*clear: both; Phần tử sẽ không chồng chéo với bất kỳ phần tử nào có thuộc tính float ở trước nó, bất kể là left, right, hay cả hai.*/
-}
+  clear: both;
+} /*clear: both; Phần tử sẽ không chồng chéo với bất kỳ phần tử nào có thuộc tính float ở trước nó, bất kể là left, right, hay cả hai.*/
+
 .text-white {
   color: #fff !important;
 }
@@ -47,6 +43,12 @@ html {
   opacity: 0.9;
   cursor: pointer;
 }
+.row::after {
+  content: "";
+  display: block;
+  clear: both;
+} /* thẻ cha không ôm được thẻ con khi phẩn tử con đã được đặt float, clear ở cuối nên dùng after. khi sử dụng thằng này sẽ không cần dùng class clear nữa
+quy tắc CSS này đảm bảo rằng .row chứa đúng các phần tử con đã được float, ngăn ngừa các vấn đề bố trí như các phần tử chồng lên nhau hoặc thoát khỏi container của chúng. Đây là một kỹ thuật phổ biến trong hệ thống lưới và bố cục nơi các phần tử đã được float được sử dụng để định vị.*/
 .row {
   margin-left: -8px;
   margin-right: -8px;
@@ -93,6 +95,7 @@ html {
   top: 0;
   left: 0;
   right: 0;
+  /* overflow: hidden; */
   z-index: 1; /* nếu bạn muốn một phần tử nằm trên phần tử khác, bạn có thể đặt z-index của nó cao hơn. Điều này thường được sử dụng khi bạn có các phần tử chồng lên nhau, chẳng hạn như menu hover, popup, hoặc modal.
   z-index chỉ hoạt động trên các phần tử có thuộc tính vị trí (position) được đặt là relative, absolute, hoặc fixed. Nếu các phần tử này không có thuộc tính vị trí, z-index sẽ không có hiệu lực.*/
 } /* Thêm thuộc tính position: fixed vào header để có thể scroll khi content dài, cho top, right, left = 0 để nó bám dính vào các mép màn hình*/
@@ -165,7 +168,14 @@ html {
 #nav .nav-arrow-down /*css cho icon down*/ {
   font-size: 14px;
 }
+#header .mobile-menu-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
 
+#header .mobile-menu-btn,
 #header .search-btn {
   float: right; /*vì search-btn đang nằm dưới vì nó đang là thẻ div và mặc định nó cũng có tính chất kế thừa kết chiều ngang
    nó có thể chiếm nên nó chiếm hết 100% thẻ cha. Để đẩy sang phải thì dùng Float =right*/
@@ -173,13 +183,21 @@ html {
 }
 
 #header .search-btn:hover {
-  background-color: rgb(150, 115, 27);
+  background-color: red;
   cursor: pointer; /*thay đổi hình dạng trỏ chuột thành bàn tay*/
 }
+#header .mobile-menu-btn:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+#header .mobile-menu-btn:hover .menu-icon {
+  color: #000;
+}
 
+#header .menu-icon,
 #header .search-icon {
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 46px;
 }
 /* slider */
@@ -230,10 +248,13 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
 }
 #content .content-section {
   width: 800px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto; /*Thuộc tính margin-left: auto; và margin-right: auto; được sử dụng để căn giữa một phần tử trong container của nó. Khi sử dụng cả hai thuộc tính này cùng một lúc, phần tử sẽ được căn giữa theo chiều ngang bên trong container của nó.
   Lưu ý rằng để margin-left: auto; và margin-right: auto; hoạt động, phần tử cần phải có một chiều rộng cụ thể (nghĩa là không được đặt là auto hoặc không có giá trị chiều rộng được xác định).*/
   padding: 64px 0 112px;
+  padding-right: 16px;
+  padding-left: 16px;
 }
 #content .section-heading {
   text-align: center;
@@ -538,6 +559,7 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
 }
 #footer .socials-list a {
   text-decoration: none;
+  color: #000;
 }
 @keyframes modalFadeIn {
   from {

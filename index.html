@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Healthy Lifestyle</title>
+  <link rel="icon" href="assets/img/icon/icon.jpg">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.web.css"> <!--  cái nào ưu tiên hơn thì viết bên dưới -->
   <link rel="stylesheet" href="assets/fonts icon/themify-icons-font (1)/themify-icons/themify-icons.css">
 </head>
 
@@ -14,40 +16,45 @@
     <div id="header">
       <!-- Begin: Nav -->
       <ul id="nav">
-        <li><a href="">Home</a></li>
-        <li><a href="">Health</a></li>
-        <li><a href="">Healthy Diet Menu</a></li>
-        <li><a href="">Contact Us</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#health">Health</a></li>
+        <li><a href="#diet-menu">Diet Menu</a></li>
+        <li><a href="#contact">Contact Us</a></li>
         <li>
-          <a href="">
+          <a href="#">
             More
             <i class="nav-arrow-down ti-angle-down"></i>
             <!-- thẻ i ngoài viết chữ in nghiêng còn có thể dùng icon thì chúng ta sẽ dùng thẻ i hợp lý hơn thẻ khác -->
           </a>
           <ul class="subnav">
-            <li><a href="">Workout tracker</a></li>
-            <li><a href="">Calender</a></li>
-            <li><a href="">Note</a></li>
+            <li><a href="#">Workout tracker</a></li>
+            <li><a href="#">Calender</a></li>
+            <li><a href="#">Note</a></li>
           </ul>
         </li>
       </ul>
       <!-- End: Nav -->
-      <!-- Begin: Search button -->
+
+      <!-- Mobile menu button -->
+      <div id="mobile-menu" class="mobile-menu-btn">
+        <i class="menu-icon ti-menu"></i>
+      </div>
+      <!--  Search button -->
       <div class="search-btn">
         <i class="search-icon ti-search"></i>
       </div>
-      <!-- End: Search button -->
+
     </div>
     <div id="slider">
       <div class="text-content">
-        <h2 class="text-heading">Healthy Lifestyle</h2>
-        <div class="text-description">Looking after your health today gives me a better hope for tomorrow</div>
+        <!-- <h2 class="text-heading">Healthy Lifestyle</h2>
+        <div class="text-description">Looking after your health today gives me a better hope for tomorrow</div> -->
       </div>
     </div>
 
     <div id="content">
       <!-- About us section -->
-      <div class="content-section">
+      <div id="health" class="content-section">
         <h2 class="section-heading">HEALTH</h2>
         <p class="section-sub-heading">Healthy life, Healthy mind</p>
         <p class="about-text">For good health, we need to eat a diet. Our bodies need more nutrients from many different
@@ -82,7 +89,7 @@
         </div>
       </div>
       <!-- Healthy food section -->
-      <div class="health-diet-menu-section">
+      <div id="diet-menu" class="health-diet-menu-section">
         <div class=" content-section">
           <h2 class="section-heading text-white">DIET MENU</h2>
           <p class="section-sub-heading text-white">Eating healthy is good for your health</p>
@@ -136,7 +143,7 @@
       </div>
 
       <!-- Begin: Contact section -->
-      <div class="content-section">
+      <div id="contact" class="content-section">
         <h2 class="section-heading">CONTACT</h2>
         <p class="section-sub-heading">Always accompanying you in life</p>
         <div class="contact-content">
@@ -178,7 +185,7 @@
         <a href=""><i class="ti-instagram"></i></a>
         <a href=""><i class="ti-twitter-alt"></i></a>
       </div>
-      <p class="copyright">Powered by<a href="">Hieu Nguyen</a></p>
+      <p class="copy-right">Powered by<a href="">Hieu Nguyen</a></p>
     </div>
   </div>
   <!-- popup khi tạo modal người ta thường dùng position = fixed-->
@@ -228,6 +235,7 @@
 
 
   <script>
+    // Javascript cho đóng mở modal
     const orderBtns = document.querySelectorAll('.js-order-now')
     const modal = document.querySelector('.js-modal')
     const modalContainer = document.querySelector('.js-modal-container')
@@ -257,6 +265,38 @@
     })
     //Click close đóng popup
     closeFooterBtn.addEventListener('click', hideOrderNow)
+
+    // Javascript cho đóng mở header menu
+    var header = document.getElementById('header');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var headerHeight = header.clientHeight;
+    // đóng mở header menu
+    mobileMenu.onclick = function () {
+      var isClosed = header.clientHeight === headerHeight;
+      if (isClosed) {
+        header.style.height = 'auto'; //mở menu
+      } else {
+        header.style.height = null; // đóng menu
+      }
+    }
+
+    //Tự động đóng menu
+    var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+    for (var i = 0; i < menuItems.length; i++) {
+      var menuItem = menuItems[i];
+
+      menuItem.onclick = function (event) {
+        var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav');
+        if (!isParentMenu) {
+          header.style.height = null;
+        } else {
+          event.preventDefault();
+        }
+      }
+    }
+
+
+
   </script>
 
 </body>
