@@ -10,7 +10,7 @@
 
 html {
   scroll-behavior: smooth; /*hành động khi scroll mượt hơn*/
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serifh;
 } /*xét font chữ cho tất cả web, những thẻ nào có chữ thì nó sẽ kế thừa*/
 /* Common */
 
@@ -73,6 +73,13 @@ quy tắc CSS này đảm bảo rằng .row chứa đúng các phần tử con �
 .margin-top-16 {
   margin-top: 16px !important;
 }
+.margin-top-32 {
+  margin-top: 32px;
+}
+.overflow {
+  overflow: auto;
+} /*chỉnh tràn text*/
+
 /*
 1. Từ ngoài vào trong
 2. Từ trên xuống dưới
@@ -277,11 +284,11 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
 }
 
 #content .health-list {
-  margin-top: 48px;
+  margin-top: 32px;
 }
 /* #content .health-item {
-  /* float: left; /* float left áp dụng với các phần tử con, mục đích để các phần tử con này vào chung 1 hàng và bên trái, item 1 vì đưa lên đầu tiên, item2 item3 tương tự. Nếu bạn css vào member list thì nó chỉ là 1 list chung
-  width: 33.33333%; 
+  float: left; /* float left áp dụng với các phần tử con, mục đích để các phần tử con này vào chung 1 hàng và bên trái, item 1 vì đưa lên đầu tiên, item2 item3 tương tự. Nếu bạn css vào member list thì nó chỉ là 1 list chung
+  width: 33.33333%;
   text-align: center;
 } */
 #content .health-name {
@@ -316,6 +323,7 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
   padding: 3px 4px;
   margin-left: 8px;
   border-radius: 5px;
+  font-size: 13px;
 }
 .menu-food .day {
   float: right;
@@ -327,10 +335,11 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
   text-align: center;
   line-height: 24px;
   margin-top: -3px;
+  font-size: 13px;
 }
 /* Menu food */
 .food-list {
-  margin-top: 32px;
+  margin-top: 16px;
   /* margin-bottom: 48px; */
   /* margin-left: -8px; căn chỉnh để mép trên dưới bằng nhau cho 
   margin-right: -8px; căn chỉnh để mép trên dưới bằng nhau cho */
@@ -340,6 +349,9 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
   padding: 0 8px; 
   width: 33.33333%;
 } */
+/* .health-item {
+  border-radius: 4px;
+} */
 .food-img:hover {
   opacity: 0.7;
 }
@@ -348,7 +360,7 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
   display: block; /*không tạo khoảng cách giữa phần img và body*/
 }
 .food-body {
-  padding: 17px;
+  padding: 15px;
   font-size: 15px;
   background-color: #fff;
 }
@@ -373,12 +385,10 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
 }
 .food-description {
   margin-top: 15px;
-  line-height: 1.6;
+  line-height: 1.4;
   color: #0c0b0b;
 }
-/* .overflow {
-  overflow: auto;
-} chỉnh tràn text */
+
 /* .btn:hover {
   color: #fff;
   background-color: #000;
@@ -515,6 +525,7 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
 .contact-info i {
   width: 30px;
   display: inline-block;
+  /* font-size: 1px; */
 }
 .contact-form {
   font-size: 15px;
@@ -530,8 +541,8 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
   border: 1px solid #000;
   padding: 10px 16px;
   float: right;
-  border-radius: 8px; 
-}*/
+  border-radius: 8px;
+} */
 /* .btn:hover {
   background-color: #ccc;
   color: #000;
