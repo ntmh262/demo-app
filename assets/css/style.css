@@ -149,7 +149,7 @@ quy tắc CSS này đảm bảo rằng .row chứa đúng các phần tử con �
 #nav .subnav {
   position: absolute;
   display: none;
-  min-width: 160px;
+  min-width: max-content;
   top: 100%; /*dùng top-left để căn chỉnh chuẩn hơn*/
   left: 0;
   background-color: #fff;
@@ -518,15 +518,22 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
   margin-top: 48px;
 }
 .contact-info {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.5;
-  color: #298311;
 }
-.contact-info i {
+.contact-info i[class*="ti-"] {
   width: 30px;
   display: inline-block;
   /* font-size: 1px; */
 }
+.contact-info a {
+  color: #101aef;
+  opacity: 0.9;
+}
+.contact-info a:hover {
+  opacity: 1;
+}
+
 .contact-form {
   font-size: 15px;
 }

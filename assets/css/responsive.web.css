@@ -1,3 +1,30 @@
+/*tablet & mobile*/
+@media (max-width: 1023px) {
+  .btn {
+    padding: 15px 16px;
+  }
+  #nav .subnav a {
+    padding: 5px 12px;
+  }
+  .contact-form .font-control {
+    padding: 15px;
+  }
+  .socials-list {
+    font-size: 48px;
+  }
+  #footer .socials-list a {
+    margin: 0 8px;
+  }
+  #footer .copy-right {
+    padding: 12px 0;
+    display: inline-block;
+  }
+  .contact-info {
+    line-height: 2;
+}
+
+}
+
 /* Mobile */
 @media (max-width: 740px) {
   .s-full-width {
@@ -36,7 +63,7 @@
   }
   #nav .subnav a {
     color: #fff;
-    padding: 5px 41px;
+    padding: 5px 12px;
   }
   /* #content .health-item {
     margin-top: 30px;
@@ -46,7 +73,7 @@
     width: 60%;
   }
   .contact-form {
-    margin-top: 16px;
+    margin-top: 32px;
   }
   .contact-info {
     font-size: 13.5px;
@@ -54,7 +81,7 @@
 }
 /* Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
-}
+ 
 /* /* PC  */
 @media (min-width: 1024px) {
 }
