@@ -216,7 +216,7 @@ quy tắc CSS này đảm bảo rằng .row chứa đúng các phần tử con �
   position: relative;
   margin-top: 46px;
   padding-top: 50%; /*khi nó thêm 1 cái value ở sau là giá trị % thì 50% chính là 50 % chiều ngang của chính nó. Vì vậy khi thu nhỏ phóng to kích thước chiều cao luôn bằng 50% của chiều rộng*/
-  background: url("/assets/img/silder/silder\ 11.webp");
+  background: url("../img/silder/silder\ 11.webp"); /*để nếu có thay đổi thư mục thì ảnh cũng không bị lỗi*/
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -240,14 +240,17 @@ background-size: cover; làm cho hình nền phù hợp với kích thước c�
   text-align: center;
 }
 #slider .text-heading {
-  font-weight: bold;
+  font-weight: 500;
   font-size: 30px;
+  color: #fff;
 }
 
 #slider .text-description {
-  font-weight: 500;
-  font-size: 18px;
+  /* font-weight: 500; */
+  color: #fff;
+  font-size: 15px;
   margin-top: 20px;
+  text-shadow: 0 0 1px #000;
 }
 
 /* content */
